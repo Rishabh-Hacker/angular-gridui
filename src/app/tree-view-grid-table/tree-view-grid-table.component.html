@@ -1,0 +1,79 @@
+<div id="example">
+  <table id="grid">
+    <colgroup>
+      <col />
+      <col />
+      <col />
+      <col />
+      <col />
+      <col />
+      <col />
+      <col />
+      <col />
+      <col />
+      <col />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Left-Description</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Right-Description</th>
+        <th></th>
+        <th></th>
+        <th>Value</th>
+        <th>Value</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of obj_data1">
+        <td>{{item.name}}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <i
+            (click)="ChildExpandCollapse(parentCheckExpandCollapse)"
+            [ngClass]="parentCheckExpandCollapse ?  'fa fa-plus-square': 'fa fa-minus-square'"
+          ></i
+          >&nbsp;{{item.description}}
+        </td>
+        <td>&nbsp;{{item.total}}</td>
+        <td>Yes</td>
+      </tr>
+      <!-- <tr>
+        <td>Audi</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>BMW</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+      </tr> -->
+    </tbody>
+  </table>
+</div>
