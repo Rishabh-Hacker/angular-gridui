@@ -82,7 +82,7 @@ export class AppComponent {
         }
       ]
     },
-     {
+    {
       name: "parent2",
       total: 0,
       description: "parent-description",
@@ -100,7 +100,7 @@ export class AppComponent {
             },
             {
               name: "subchild2",
-              price: 15,
+              price: 10,
               description: "subchild-description"
             },
             {
@@ -127,7 +127,7 @@ export class AppComponent {
             },
             {
               name: "subchild3",
-              price: 0,
+              price: 5,
               description: "subchild-description"
             }
           ]
@@ -144,7 +144,7 @@ export class AppComponent {
             },
             {
               name: "subchild2",
-              price: 6,
+              price: 4,
               description: "subchild-description"
             },
             {
