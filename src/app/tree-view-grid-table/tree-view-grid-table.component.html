@@ -21,7 +21,7 @@
 						</tr>
 					</table>
 					<table id="grid">
-						<tr *ngFor="let child of test;let j=index">
+						<tr *ngFor="let child of parent.child;let j=index">
 							<td *ngIf="!parentCheckExpandCollapse[i]" style="text-align:center">{{child.name}}
 								<table id="grid">
 									<tr *ngFor="let child of test2;let k=index">
