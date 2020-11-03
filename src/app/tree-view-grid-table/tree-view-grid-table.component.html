@@ -4,108 +4,77 @@
 			<col />
 			<col />
 			<col />
-			<col />
-			<col />
-			<col />
-			<col />
-			<col />
-			<col />
-			<col />
-			<col />
+
 		</colgroup>
 		<thead>
 			<tr>
 				<th>Left-Description</th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
+
 				<th>Right-Description</th>
-				<th></th>
-				<th></th>
-				<th>Value1</th>
-				<th>Value2</th>
-				<th>Value3</th>
+
+				<th>Value</th>
+
 			</tr>
 		</thead>
 		<tbody>
 			<tr *ngFor="let parent of obj_data1;let i=index">
-				<td>{{parent.name}}</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>
-					<i
+				<td>{{parent.name}}
+			<tr *ngFor="let child of test;let j=index">
+				<td *ngIf="!parentCheckExpandCollapse[i]" style="text-align:center">{{child.name}}
+			<tr *ngFor="let child of test2;let k=index">
+				<td *ngIf="!childCheckExpandCollapse[j]" style="text-align:right">
+					{{child.name}}</td>
+			</tr>
+			</td>
+			</tr>
+			</td>
+
+			<td>
+				<i
             (click)="parentCheckExpandCollapse[i]=!parentCheckExpandCollapse[i]" (click)="ChildExpandCollapse(parentCheckExpandCollapse[i],i)"
             [ngClass]="parentCheckExpandCollapse[i] ?  'fa fa-plus-square': 'fa fa-minus-square'"
           ></i>&nbsp;{{parent.description}}
+				<table id="grid">
+					<tbody>
+						<tr *ngFor="let child of test;let j=index">
 
-				</td>
-				<td></td>
-				<td></td>
-				<td>&nbsp;{{parent.total}}</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr *ngFor="let child of test;let j=index" [ngClass]="childCheckExpandCollapse[j]?'':'hide'">
-				<td style="text-align:center">{{child.name}}</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td> <i
+							<td *ngIf="!parentCheckExpandCollapse[i]"> <i
          (click)="childCheckExpandCollapse[j]=!childCheckExpandCollapse[j]"      (click)="SubChildExpandCollapse(childCheckExpandCollapse[j],test[j].subchild)"
             [ngClass]="childCheckExpandCollapse[j] ?  'fa fa-plus-square': 'fa fa-minus-square'"
           ></i>&nbsp;<i class="fa fa-square">&nbsp;{{child.description}}</i>
-				</td>
-				<td></td>
-				<td></td>
-				<td>&nbsp;{{child.total}}</td>
-				<td></td>
-				<td></td>
+								<table id="grid">
+									<tbody>
+										<tr *ngFor="let child of test2;let k=index">
+
+											<td *ngIf="!childCheckExpandCollapse[j]">
+												<i class="fa fa-circle">&nbsp;{{child.description}}</i>
+											</td>
+
+										</tr>
+									</tbody>
+								</table>
+							</td>
+
+						</tr>
+					</tbody>
+				</table>
+			</td>
+
+			<td>&nbsp;{{parent.total}}
+				<tr *ngFor="let child of test;let j=index">
+					<td *ngIf="!parentCheckExpandCollapse[i]">&nbsp;{{child.total}}
+				<tr *ngFor="let child of test2;let k=index">
+					<td *ngIf="!childCheckExpandCollapse[j]">&nbsp;{{child.price}}</td>
+				</tr>
+			</td>
 			</tr>
-			<tr *ngFor="let child of test2;let j=index" [ngClass]="childCheckExpandCollapse[j]?'':'hide'">
-				<td style="text-align:right">{{child.name}}</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td> <i class="fa fa-circle">&nbsp;{{child.description}}</i>
-				</td>
-				<td></td>
-				<td></td>
-				<td>&nbsp;{{child.price}}</td>
-				<td></td>
-				<td></td>
+			</td>
+
 			</tr>
 
-			<!-- <tr>
-        <td>Audi</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>Yes</td>
-        <td>Yes</td>
-        <td>Yes</td>
-      </tr>
-      <tr>
-        <td>BMW</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>Yes</td>
-        <td>Yes</td>
-        <td>Yes</td>
-      </tr> -->
+
+
+
 		</tbody>
 	</table>
 </div>
