@@ -42,6 +42,11 @@ export class AppComponent {
               description: "subchild-description"
             },
             {
+              name: "subchild",
+              price: 10,
+              description: "subchild-description"
+            },
+            {
               name: "subchild2",
               price: 15,
               description: "subchild-description"
