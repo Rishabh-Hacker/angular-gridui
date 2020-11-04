@@ -6,7 +6,25 @@ import $ from "jquery";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  name = "Angular";
+  // JSON Schema format required in tree view component.
+  // export class Parent {
+  //   name: string;
+  //   total: number;
+  //   description:string;
+  //   child: Child[];
+  // }
+  // export class Child {
+  //   name: string;
+  //   total: number;
+  //   description:string;
+  //   subchild: SubChild[];
+  // }
+  // export class SubChild {
+  //   name: string;
+  //  description:string;
+  //   price: number;
+  // }
+
   obj_data = [
     {
       name: "parent",
@@ -17,7 +35,6 @@ export class AppComponent {
           name: "child",
           total: 0,
           description: "child-description",
-
           subchild: [
             {
               name: "subchild",

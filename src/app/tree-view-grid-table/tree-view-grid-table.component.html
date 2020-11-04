@@ -24,17 +24,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			<ng-container *ngFor="let parent of obj_data1">
+			<ng-container *ngFor="let parent of obj_data1;let i=index">
 				<tr>
-					<td>{{parent.name}}</td>
+					<td style=" text-align:right">{{parent.name}}</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>
-						<i
-            (click)="parentCheckExpandCollapse[i]=!parentCheckExpandCollapse[i]" (click)="ChildExpandCollapse(parentCheckExpandCollapse[i],i)"
-            [ngClass]="parentCheckExpandCollapse[i] ?  'fa fa-plus-square': 'fa fa-minus-square'"
+						<i (click)="parentCheckExpandCollapse[i]=!parentCheckExpandCollapse[i]"
+              (click)="closeAllChildNodes(i)"
+            [ngClass]="parentCheckExpandCollapse[i] ?  'fa fa-plus-square': 'fa fa-minus-square '"
           ></i>&nbsp;{{parent.description}}
 					</td>
 					<td></td>
@@ -43,32 +43,32 @@
 				</tr>
 				<ng-container *ngFor="let child of parent.child;let j=index">
 					<tr>
-						<td style="text-align:center">{{child.name}}</td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td *ngIf="!parentCheckExpandCollapse[i]"> <i
-         (click)="childCheckExpandCollapse[j]=!childCheckExpandCollapse[j]"      (click)="SubChildExpandCollapse(childCheckExpandCollapse[j],test[j].subchild)"
-            [ngClass]="childCheckExpandCollapse[j] ?  'fa fa-plus-square': 'fa fa-minus-square'"
-          ></i>&nbsp;<i class="fa fa-square">&nbsp;{{child.description}}</i>
+						<td *ngIf="!parentCheckExpandCollapse[i]" style=" text-align:right">{{child.name}}</td>
+						<td *ngIf="!parentCheckExpandCollapse[i]"></td>
+						<td *ngIf="!parentCheckExpandCollapse[i]"></td>
+						<td *ngIf="!parentCheckExpandCollapse[i]"></td>
+						<td *ngIf="!parentCheckExpandCollapse[i]"></td>
+						<td *ngIf="!parentCheckExpandCollapse[i]" style="text-align:center"> <i
+         (click)="childCheckExpandCollapse[i][j]=!childCheckExpandCollapse[i][j]"
+            [ngClass]="childCheckExpandCollapse[i][j] ?  'fa fa-plus-square': 'fa fa-minus-square'"
+          ></i>&nbsp;&nbsp;<i class="fa fa-square">&nbsp;{{child.description}}</i>
 						</td>
-						<td></td>
-						<td></td>
-						<td *ngIf="!parentCheckExpandCollapse[i]">&nbsp;{{child.total}}</td>
+						<td *ngIf="!parentCheckExpandCollapse[i]"></td>
+						<td *ngIf="!parentCheckExpandCollapse[i]"></td>
+						<td *ngIf="!parentCheckExpandCollapse[i]">{{child.total}}</td>
 					</tr>
-					<tr *ngFor="let subchild of child.subchild;let k=index">
-						<td style="text-align:right">{{subchild.name}}</td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td *ngIf="!childCheckExpandCollapse[j]">
-							<i class="fa fa-circle">{{subchild.description}}</i>
+					<tr *ngFor="let subchild of child.subchild;">
+						<td *ngIf="!childCheckExpandCollapse[i][j]" style=" text-align:right">{{subchild.name}}</td>
+						<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
+						<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
+						<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
+						<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
+						<td *ngIf="!childCheckExpandCollapse[i][j]" style=" text-align:right">
+							<i class="fa fa-circle">&nbsp;{{subchild.description}}</i>
 						</td>
-						<td></td>
-						<td></td>
-						<td *ngIf="!childCheckExpandCollapse[j]">&nbsp;{{subchild.price}}</td>
+						<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
+						<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
+						<td *ngIf="!childCheckExpandCollapse[i][j]">{{subchild.price}}</td>
 					</tr>
 				</ng-container>
 			</ng-container>

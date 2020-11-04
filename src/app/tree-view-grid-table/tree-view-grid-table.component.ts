@@ -6,81 +6,49 @@ import $ from "jquery";
   templateUrl: "./tree-view-grid-table.component.html",
   styleUrls: ["./tree-view-grid-table.component.css"]
 })
-// export class Parent {
-//   name: string;
-//   total: number;
-//   child: Child[];
-// }
-// export class Child {
-//   name: string;
-//   total: number;
-//   subchild: SubChild[];
-// }
-// export class SubChild {
-//   name: string;
-//   price: number;
-// }
 export class TreeViewGridTableComponent implements OnInit {
   @Input() obj_data1: any;
   constructor() {}
   parentCheckExpandCollapse = [];
-  childCheckExpandCollapse = [];
+  childCheckExpandCollapse = [[], []];
+  parentLen;
+  childLen;
   ngOnInit() {
-    var parentLen = this.obj_data1.length;
+    //parent length
+    this.parentLen = this.obj_data1.length;
+    // variables used
     var [i, j, k] = [0, 0, 0];
-    var childLen = this.obj_data1[i].child.length;
-    for (var t = 0; t < parentLen; t++) {
+    //child length
+    this.childLen = this.obj_data1[i].child.length;
+    // calucaltion for total for parent and child node based on subChild values
+    for (var t = 0; t < this.parentLen; t++) {
       j = 0;
+      // setting up boolean conditon for collapse and expand parent
       this.parentCheckExpandCollapse[t] = 1;
+      // calucaltion for total for  child node based on subChild
       for (let index of this.obj_data1[t].child) {
         this.obj_data1[t].child[j++].total = index.subchild.reduce(
           (value, next) => value + next.price,
           0
         );
       }
+      // calucaltion for total for  parent node based on child values
       this.obj_data1[t].total = this.obj_data1[t].child.reduce(
         (value, next) => value + next.total,
         0
       );
     }
-    for (var t = 0; t < parentLen; t++) {
-      this.childCheckExpandCollapse[t] = 1;
+    // setting up boolean conditon for collapse and expand child
+    for (var k = 0; k < this.parentLen; k++) {
+      for (var t = 0; t < this.childLen; t++) {
+        this.childCheckExpandCollapse[k][t] = 1;
+      }
     }
-    console.log(this.obj_data1);
-
-    //  $(document).ready(function() {
-    //   $("#grid").kendoGrid({
-    //     height: 550
-    //   });
-    // });
   }
-  test;
-  ChildExpandCollapse(check, index) {
-    this.test = this.obj_data1[index].child;
-    if (check) {
-      this.childCheckExpandCollapse[index] = 0;
-    } else {
-      this.childCheckExpandCollapse[index] = 1;
+  //method to close all node if respective parent node is closed
+  closeAllChildNodes(index) {
+    for (var t = 0; t < this.childLen; t++) {
+      this.childCheckExpandCollapse[index][t] = 1;
     }
-    // console.log(this.obj_data1[index].child, this.test);
   }
-  test2;
-  SubChildExpandCollapse(check, index) {
-    this.test2 = index;
-    // if (check) {
-    //   this.childCheckExpandCollapse[index] = 0;
-    // } else {
-    //   this.childCheckExpandCollapse[index] = 1;
-    // }
-    console.log(index);
-  }
-  //   if (check) {
-  //     this.parentCheckExpandCollapse[i] = false;
-  //   } else {
-  //     this.parentCheckExpandCollapse[i] = true;
-  //   }
-  //   this.parent = this.obj_data1[i].child;
-  //   console.log(this.obj_data1[i].child);
-  //   console.log(i, check);
-  // }
 }
