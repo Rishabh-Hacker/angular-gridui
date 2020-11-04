@@ -1,77 +1,75 @@
-<div id="example">
-	<table id="grid">
-		<colgroup>
-			<col />
-			<col />
-			<col />
-			<col />
-			<col />
-			<col />
-			<col />
-			<col />
-		</colgroup>
-		<thead>
+<table>
+	<colgroup>
+		<col />
+		<col />
+		<col />
+		<col />
+		<col />
+		<col />
+		<col />
+		<col />
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Left-Description</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th>Right-Description</th>
+			<th></th>
+			<th></th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<ng-container *ngFor="let parent of obj_data1;let i=index">
 			<tr>
-				<th>Left-Description</th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th>Right-Description</th>
-				<th></th>
-				<th></th>
-				<th>Value</th>
-			</tr>
-		</thead>
-		<tbody>
-			<ng-container *ngFor="let parent of obj_data1;let i=index">
-				<tr>
-					<td style=" text-align:right">{{parent.name}}</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>
-						<i (click)="parentCheckExpandCollapse[i]=!parentCheckExpandCollapse[i]"
+				<td style=" text-align:right">{{parent.name}}</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<i (click)="parentCheckExpandCollapse[i]=!parentCheckExpandCollapse[i]"
               (click)="closeAllChildNodes(i)"
             [ngClass]="parentCheckExpandCollapse[i] ?  'fa fa-plus-square': 'fa fa-minus-square '"
           ></i>&nbsp;{{parent.description}}
-					</td>
+				</td>
+				<td></td>
+				<td></td>
+				<td>{{parent.total}}</td>
+			</tr>
+			<ng-container *ngFor="let child of parent.child;let j=index">
+				<tr *ngIf="!parentCheckExpandCollapse[i]">
+					<td style=" text-align:right">{{child.name}}</td>
 					<td></td>
 					<td></td>
-					<td>{{parent.total}}</td>
-				</tr>
-				<ng-container *ngFor="let child of parent.child;let j=index">
-					<tr>
-						<td *ngIf="!parentCheckExpandCollapse[i]" style=" text-align:right">{{child.name}}</td>
-						<td *ngIf="!parentCheckExpandCollapse[i]"></td>
-						<td *ngIf="!parentCheckExpandCollapse[i]"></td>
-						<td *ngIf="!parentCheckExpandCollapse[i]"></td>
-						<td *ngIf="!parentCheckExpandCollapse[i]"></td>
-						<td *ngIf="!parentCheckExpandCollapse[i]" style="text-align:center"> <i
+					<td></td>
+					<td></td>
+					<td style="text-align:center"> <i
          (click)="childCheckExpandCollapse[i][j]=!childCheckExpandCollapse[i][j]"
             [ngClass]="childCheckExpandCollapse[i][j] ?  'fa fa-plus-square': 'fa fa-minus-square'"
           ></i>&nbsp;&nbsp;<i class="fa fa-square">&nbsp;{{child.description}}</i>
-						</td>
-						<td *ngIf="!parentCheckExpandCollapse[i]"></td>
-						<td *ngIf="!parentCheckExpandCollapse[i]"></td>
-						<td *ngIf="!parentCheckExpandCollapse[i]">{{child.total}}</td>
-					</tr>
-					<tr *ngFor="let subchild of child.subchild;">
-						<td *ngIf="!childCheckExpandCollapse[i][j]" style=" text-align:right">{{subchild.name}}</td>
-						<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
-						<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
-						<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
-						<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
-						<td *ngIf="!childCheckExpandCollapse[i][j]" style=" text-align:right">
-							<i class="fa fa-circle">&nbsp;{{subchild.description}}</i>
-						</td>
-						<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
-						<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
-						<td *ngIf="!childCheckExpandCollapse[i][j]">{{subchild.price}}</td>
-					</tr>
-				</ng-container>
+					</td>
+					<td></td>
+					<td></td>
+					<td>{{child.total}}</td>
+				</tr>
+				<tr *ngFor="let subchild of child.subchild;">
+					<td *ngIf="!childCheckExpandCollapse[i][j]" style=" text-align:right">{{subchild.name}}</td>
+					<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
+					<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
+					<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
+					<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
+					<td *ngIf="!childCheckExpandCollapse[i][j]" style=" text-align:right">
+						<i class="fa fa-circle">&nbsp;{{subchild.description}}</i>
+					</td>
+					<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
+					<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
+					<td *ngIf="!childCheckExpandCollapse[i][j]">{{subchild.price}}</td>
+				</tr>
 			</ng-container>
-		</tbody>
-	</table>
-</div>
+		</ng-container>
+	</tbody>
+</table>

@@ -7,12 +7,15 @@ import $ from "jquery";
   styleUrls: ["./tree-view-grid-table.component.css"]
 })
 export class TreeViewGridTableComponent implements OnInit {
+  //input coming from parent component
   @Input() obj_data1: any;
   constructor() {}
+  //variables used in the component
   parentCheckExpandCollapse = [];
   childCheckExpandCollapse = [[], []];
   parentLen;
   childLen;
+
   ngOnInit() {
     //parent length
     this.parentLen = this.obj_data1.length;
