@@ -67,11 +67,11 @@ export class TreeViewGridTableComponent implements OnInit {
   test2;
   SubChildExpandCollapse(check, index) {
     this.test2 = index;
-    if (check) {
-      this.childCheckExpandCollapse[index] = 0;
-    } else {
-      this.childCheckExpandCollapse[index] = 1;
-    }
+    // if (check) {
+    //   this.childCheckExpandCollapse[index] = 0;
+    // } else {
+    //   this.childCheckExpandCollapse[index] = 1;
+    // }
     console.log(index);
   }
   //   if (check) {
