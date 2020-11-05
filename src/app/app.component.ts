@@ -22,39 +22,39 @@ export class AppComponent {
   // export class SubChild {
   //   name: string;
   //  description:string;
-  //   price: number;
+  //   price: [[]];
   // }
 
   obj_data = [
     {
-      name: "parent",
+      name: "test",
       total: 0,
-      description: "parent-description",
+      description: "test2",
       child: [
         {
-          name: "child",
+          name: "testing",
           total: 0,
-          description: "child-description",
+          description: "testing 1",
           subchild: [
             {
               name: "subchild",
               price: 10,
-              description: "subchild-description"
+              description: "testing 1 1"
             },
             {
               name: "subchild",
               price: 10,
-              description: "subchild-description"
+              description: "testing 1 2"
             },
             {
               name: "subchild2",
               price: 15,
-              description: "subchild-description"
+              description: "testing 1 3"
             },
             {
               name: "subchild3",
               price: 5,
-              description: "subchild-description"
+              description: "testing 1 4"
             }
           ]
         },
