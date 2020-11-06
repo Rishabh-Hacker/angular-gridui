@@ -8,6 +8,7 @@
 		<col />
 		<col />
 		<col />
+		<col />
 	</colgroup>
 	<thead>
 		<tr>
@@ -19,6 +20,7 @@
 			<th>Right-Description</th>
 			<th></th>
 			<th></th>
+			<th>Value</th>
 			<th>Value</th>
 		</tr>
 	</thead>
@@ -38,7 +40,8 @@
 				</td>
 				<td></td>
 				<td></td>
-				<td>{{parent.total}}</td>
+				<td *ngFor="let total of parent.total">{{total}}</td>
+
 			</tr>
 			<ng-container *ngFor="let child of parent.child;let j=index">
 				<tr *ngIf="!parentCheckExpandCollapse[i]">
@@ -54,7 +57,7 @@
 					</td>
 					<td></td>
 					<td></td>
-					<td>{{child.total}}</td>
+					<td *ngFor="let total of child.total">{{total}}</td>
 				</tr>
 				<tr *ngFor="let subchild of child.subchild;">
 					<td *ngIf="!childCheckExpandCollapse[i][j]" style=" text-align:right">{{subchild.name}}</td>
@@ -67,7 +70,12 @@
 					</td>
 					<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
 					<td *ngIf="!childCheckExpandCollapse[i][j]"></td>
-					<td *ngIf="!childCheckExpandCollapse[i][j]">{{subchild.price}}</td>
+					<ng-container *ngIf="!childCheckExpandCollapse[i][j]">
+						<td *ngFor="let price of subchild.price">
+							{{price}}
+
+						</td>
+					</ng-container>
 				</tr>
 			</ng-container>
 		</ng-container>

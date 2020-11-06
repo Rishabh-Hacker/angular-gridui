@@ -30,14 +30,25 @@ export class TreeViewGridTableComponent implements OnInit {
       this.parentCheckExpandCollapse[t] = 1;
       // calucaltion for total for  child node based on subChild
       for (let index of this.obj_data1[t].child) {
-        this.obj_data1[t].child[j++].total = index.subchild.reduce(
-          (value, next) => value + next.price,
+        this.obj_data1[t].child[j].total[0] = index.subchild.reduce(
+          (value, next) => value + next.price[0],
           0
         );
+        this.obj_data1[t].child[j++].total[1] = index.subchild.reduce(
+          (value, next) => value + next.price[1],
+          0
+        );
+        //  this.obj_data1[t].child[j++].total= index.subchild.reduce(function(a, b) {
+        //     return a + b;
+        //   });
       }
       // calucaltion for total for  parent node based on child values
-      this.obj_data1[t].total = this.obj_data1[t].child.reduce(
-        (value, next) => value + next.total,
+      this.obj_data1[t].total[0] = this.obj_data1[t].child.reduce(
+        (value, next) => value + next.total[0],
+        0
+      );
+      this.obj_data1[t].total[1] = this.obj_data1[t].child.reduce(
+        (value, next) => value + next.total[1],
         0
       );
     }
